@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmaptaskr_docs_copy=self.webpackChunkmaptaskr_docs_copy||[]).push([[3669],{16833:s=>{s.exports=JSON.parse('{"label":"hello","permalink":"/blog/tags/hello","allTagsPath":"/blog/tags","count":2,"unlisted":false}')}}]);
