@@ -1,0 +1,459 @@
+{
+	"info": {
+		"_postman_id": "18b2608d-0f57-4a13-9e4f-8df4158635a5",
+		"name": "Map Server Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36732890"
+	},
+	"item": [
+		{
+			"name": "Toggle root layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/MapServer?f=json&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"MapServer"
+					],
+					"query": [
+						{
+							"key": "f",
+							"value": "json"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Toggle indexed layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/MapServer/{{layerIndex}}?f=json&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"MapServer",
+						"{{layerIndex}}"
+					],
+					"query": [
+						{
+							"key": "f",
+							"value": "json"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request legend information",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/MapServer/legend?f=json&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"MapServer",
+						"legend"
+					],
+					"query": [
+						{
+							"key": "f",
+							"value": "json"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Export tile to render raster image",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/MapServer/export?F=image&FORMAT=PNG32&TRANSPARENT=true&layers=show:{{layerIndex}}&TILED=true&layerDefs={{layerIndex}}:&SIZE=256,256&BBOX=12836528.782099359,-3757032.814272985,12993071.8160274,-3600489.780344944&BBOXSR=3857&IMAGESR=3857&DPI=90&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"MapServer",
+						"export"
+					],
+					"query": [
+						{
+							"key": "F",
+							"value": "image"
+						},
+						{
+							"key": "FORMAT",
+							"value": "PNG32"
+						},
+						{
+							"key": "TRANSPARENT",
+							"value": "true"
+						},
+						{
+							"key": "layers",
+							"value": "show:{{layerIndex}}"
+						},
+						{
+							"key": "TILED",
+							"value": "true"
+						},
+						{
+							"key": "layerDefs",
+							"value": "{{layerIndex}}:"
+						},
+						{
+							"key": "SIZE",
+							"value": "256,256"
+						},
+						{
+							"key": "BBOX",
+							"value": "12836528.782099359,-3757032.814272985,12993071.8160274,-3600489.780344944"
+						},
+						{
+							"key": "BBOXSR",
+							"value": "3857"
+						},
+						{
+							"key": "IMAGESR",
+							"value": "3857"
+						},
+						{
+							"key": "DPI",
+							"value": "90"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Select feature(s)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "content-type",
+						"value": "application/x-www-form-urlencoded; charset=UTF-8"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "geometry",
+							"value": " {\"xmin\":12983458.139529606,\"ymin\":-3599172.459732884,\"xmax\":12989378.345128996,\"ymax\":-3593252.254133494,\"spatialReference\":{\"wkid\":102100,\"latestWkid\":3857}}",
+							"type": "text"
+						},
+						{
+							"key": "f",
+							"value": " json",
+							"type": "text"
+						},
+						{
+							"key": "geometryType",
+							"value": " esriGeometryEnvelope",
+							"type": "text"
+						},
+						{
+							"key": "spatialRel",
+							"value": " esriSpatialRelIntersects",
+							"type": "text"
+						},
+						{
+							"key": "outFields",
+							"value": " *",
+							"type": "text"
+						},
+						{
+							"key": "returnGeometry",
+							"value": " true",
+							"type": "text"
+						},
+						{
+							"key": "returnTrueCurves",
+							"value": " false",
+							"type": "text"
+						},
+						{
+							"key": "outSR",
+							"value": " 4326",
+							"type": "text"
+						},
+						{
+							"key": "returnIdsOnly",
+							"value": " false",
+							"type": "text"
+						},
+						{
+							"key": "returnCountOnly",
+							"value": " false",
+							"type": "text"
+						},
+						{
+							"key": "returnZ",
+							"value": " false",
+							"type": "text"
+						},
+						{
+							"key": "returnM",
+							"value": " false",
+							"type": "text"
+						},
+						{
+							"key": "returnDistinctValues",
+							"value": " false",
+							"type": "text"
+						},
+						{
+							"key": "returnExtentOnly",
+							"value": " false",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{yourLayerUrl}}/MapServer/{{layerIndex}}/query",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"MapServer",
+						"{{layerIndex}}",
+						"query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requesting attribute table",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/javascript, */*; q=0.01"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/MapServer/{{layerIndex}}/query?where=(1=1)&f=json&returnGeometry=true&outSR=4326&outFields=*&resultOffset=0&resultRecordCount=1000&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"MapServer",
+						"{{layerIndex}}",
+						"query"
+					],
+					"query": [
+						{
+							"key": "where",
+							"value": "(1=1)"
+						},
+						{
+							"key": "f",
+							"value": "json"
+						},
+						{
+							"key": "returnGeometry",
+							"value": "true"
+						},
+						{
+							"key": "outSR",
+							"value": "4326"
+						},
+						{
+							"key": "outFields",
+							"value": "*"
+						},
+						{
+							"key": "resultOffset",
+							"value": "0"
+						},
+						{
+							"key": "resultRecordCount",
+							"value": "1000"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filtering layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/MapServer/export?F=image&FORMAT=PNG32&TRANSPARENT=true&layers=show:{{layerIndex}}&TILED=true&layerDefs={{layerIndex}}:((oid = 1))&SIZE=256,256&BBOX=12836528.782099359,-3757032.814272985,12993071.8160274,-3600489.780344944&BBOXSR=3857&IMAGESR=3857&DPI=90&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"MapServer",
+						"export"
+					],
+					"query": [
+						{
+							"key": "F",
+							"value": "image"
+						},
+						{
+							"key": "FORMAT",
+							"value": "PNG32"
+						},
+						{
+							"key": "TRANSPARENT",
+							"value": "true"
+						},
+						{
+							"key": "layers",
+							"value": "show:{{layerIndex}}"
+						},
+						{
+							"key": "TILED",
+							"value": "true"
+						},
+						{
+							"key": "layerDefs",
+							"value": "{{layerIndex}}:((oid = 1))"
+						},
+						{
+							"key": "SIZE",
+							"value": "256,256"
+						},
+						{
+							"key": "BBOX",
+							"value": "12836528.782099359,-3757032.814272985,12993071.8160274,-3600489.780344944"
+						},
+						{
+							"key": "BBOXSR",
+							"value": "3857"
+						},
+						{
+							"key": "IMAGESR",
+							"value": "3857"
+						},
+						{
+							"key": "DPI",
+							"value": "90"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "yourLayerUrl",
+			"value": "yourLayerUrl",
+			"type": "string"
+		},
+		{
+			"key": "layerIndex",
+			"value": "0",
+			"type": "string"
+		},
+		{
+			"key": "yourToken",
+			"value": "yourToken",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "20e90a54-b2da-47b4-b9b6-5c09e621caac",
+		"name": "VectorTile Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36732890"
+	},
+	"item": [
+		{
+			"name": "Toggle layer on",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"url": {
+					"raw": "{{yourVectorTileURL}}/VectorTileServer/resources/styles/root.json",
+					"host": [
+						"{{yourVectorTileURL}}"
+					],
+					"path": [
+						"VectorTileServer",
+						"resources",
+						"styles",
+						"root.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Toggle basemap on",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"url": {
+					"raw": "{{yourVectorTileURL}}/VectorTileServer?f=json",
+					"host": [
+						"{{yourVectorTileURL}}"
+					],
+					"path": [
+						"VectorTileServer"
+					],
+					"query": [
+						{
+							"key": "f",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requesting tile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{yourVectorTileURL}}/VectorTileServer/tile/0/0/0.pbf",
+					"host": [
+						"{{yourVectorTileURL}}"
+					],
+					"path": [
+						"VectorTileServer",
+						"tile",
+						"0",
+						"0",
+						"0.pbf"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "yourVectorTileURL",
+			"value": "yourVectorTileURL",
+			"type": "string"
+		}
+	]
+}

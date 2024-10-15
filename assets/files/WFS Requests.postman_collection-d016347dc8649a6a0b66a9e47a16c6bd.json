@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "d30327cb-1d04-46b2-b203-ad61e6564a66",
+		"name": "WFS Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36732890"
+	},
+	"item": [
+		{
+			"name": "Request root layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/WFSServer?service=WFS&request=GetCapabilities",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"WFSServer"
+					],
+					"query": [
+						{
+							"key": "service",
+							"value": "WFS"
+						},
+						{
+							"key": "request",
+							"value": "GetCapabilities"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request indexed layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/WFSServer?service=WFS&version=2.0.0&request=GetFeature&typename={{yourLayerName}}&srsname=EPSG:3857&outputFormat=GML3&bbox=12565054.550368141,-4290491.281196868,13479679.167843442,-3168337.8031482245,EPSG:3857",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"WFSServer"
+					],
+					"query": [
+						{
+							"key": "service",
+							"value": "WFS"
+						},
+						{
+							"key": "version",
+							"value": "2.0.0"
+						},
+						{
+							"key": "request",
+							"value": "GetFeature"
+						},
+						{
+							"key": "typename",
+							"value": "{{yourLayerName}}"
+						},
+						{
+							"key": "srsname",
+							"value": "EPSG:3857"
+						},
+						{
+							"key": "outputFormat",
+							"value": "GML3"
+						},
+						{
+							"key": "bbox",
+							"value": "12565054.550368141,-4290491.281196868,13479679.167843442,-3168337.8031482245,EPSG:3857"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "yourLayerUrl",
+			"value": "yourLayerUrl",
+			"type": "string"
+		},
+		{
+			"key": "yourLayerName",
+			"value": "yourLayerName",
+			"type": "string"
+		}
+	]
+}

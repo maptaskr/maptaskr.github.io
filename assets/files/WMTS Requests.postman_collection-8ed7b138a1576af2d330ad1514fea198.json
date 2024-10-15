@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "3e7a172c-6246-47a6-ab80-6a6dfdbd204c",
+		"name": "WMTS Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36732890"
+	},
+	"item": [
+		{
+			"name": "Request root layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/wmts?service=WMTS&request=GetCapabilities",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"wmts"
+					],
+					"query": [
+						{
+							"key": "service",
+							"value": "WMTS"
+						},
+						{
+							"key": "request",
+							"value": "GetCapabilities"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request indexed layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/wmts?layer={{yourLayerName}}&style=default&tilematrixset=GoogleMapsCompatible&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image/png; mode=8bit&TileMatrix=11&TileCol=1683&TileRow=1215",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"wmts"
+					],
+					"query": [
+						{
+							"key": "layer",
+							"value": "{{yourLayerName}}"
+						},
+						{
+							"key": "style",
+							"value": "default"
+						},
+						{
+							"key": "tilematrixset",
+							"value": "GoogleMapsCompatible"
+						},
+						{
+							"key": "Service",
+							"value": "WMTS"
+						},
+						{
+							"key": "Request",
+							"value": "GetTile"
+						},
+						{
+							"key": "Version",
+							"value": "1.0.0"
+						},
+						{
+							"key": "Format",
+							"value": "image/png; mode=8bit"
+						},
+						{
+							"key": "TileMatrix",
+							"value": "11"
+						},
+						{
+							"key": "TileCol",
+							"value": "1683"
+						},
+						{
+							"key": "TileRow",
+							"value": "1215"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "yourLayerUrl",
+			"value": "yourLayerUrl",
+			"type": "string"
+		},
+		{
+			"key": "yourLayerName",
+			"value": "yourLayerName",
+			"type": "string"
+		}
+	]
+}

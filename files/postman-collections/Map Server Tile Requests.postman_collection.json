@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "b21b9f66-8bc9-45be-a71a-6f20d29538e8",
+		"name": "Map Server Tile Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36732890"
+	},
+	"item": [
+		{
+			"name": "Toggle indexed layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/MapServer/{{layerIndex}}?f=json&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"MapServer",
+						"{{layerIndex}}"
+					],
+					"query": [
+						{
+							"key": "f",
+							"value": "json"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request legend information",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/MapServer/legend?f=json&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"MapServer",
+						"legend"
+					],
+					"query": [
+						{
+							"key": "f",
+							"value": "json"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Export tile to render raster image",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/MapServer/export?F=image&FORMAT=PNG32&TRANSPARENT=true&layers=show:{{layerIndex}}&TILED=true&layerDefs={{layerIndex}}:&SIZE=256,256&BBOX=12836528.782099359,-3757032.814272985,12993071.8160274,-3600489.780344944&BBOXSR=3857&IMAGESR=3857&DPI=90&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"MapServer",
+						"export"
+					],
+					"query": [
+						{
+							"key": "F",
+							"value": "image"
+						},
+						{
+							"key": "FORMAT",
+							"value": "PNG32"
+						},
+						{
+							"key": "TRANSPARENT",
+							"value": "true"
+						},
+						{
+							"key": "layers",
+							"value": "show:{{layerIndex}}"
+						},
+						{
+							"key": "TILED",
+							"value": "true"
+						},
+						{
+							"key": "layerDefs",
+							"value": "{{layerIndex}}:"
+						},
+						{
+							"key": "SIZE",
+							"value": "256,256"
+						},
+						{
+							"key": "BBOX",
+							"value": "12836528.782099359,-3757032.814272985,12993071.8160274,-3600489.780344944"
+						},
+						{
+							"key": "BBOXSR",
+							"value": "3857"
+						},
+						{
+							"key": "IMAGESR",
+							"value": "3857"
+						},
+						{
+							"key": "DPI",
+							"value": "90"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Toggle basemap on",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/MapServer?f=json&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"MapServer"
+					],
+					"query": [
+						{
+							"key": "f",
+							"value": "json"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requesting tile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/MapServer/tile/0/0/0?token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"MapServer",
+						"tile",
+						"0",
+						"0",
+						"0"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "yourLayerUrl",
+			"value": "yourLayerUrl",
+			"type": "string"
+		},
+		{
+			"key": "layerIndex",
+			"value": "0",
+			"type": "string"
+		},
+		{
+			"key": "yourToken",
+			"value": "yourToken",
+			"type": "string"
+		}
+	]
+}

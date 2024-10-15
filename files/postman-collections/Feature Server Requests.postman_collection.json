@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "2994bfef-7c82-4ab2-b66c-f3acfdaa3062",
+		"name": "Feature Server Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36732890"
+	},
+	"item": [
+		{
+			"name": "Toggle root layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/FeatureServer?f=json&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"FeatureServer"
+					],
+					"query": [
+						{
+							"key": "f",
+							"value": "json"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Toggle indexed layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/FeatureServer/{{layerIndex}}?f=json&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"FeatureServer",
+						"{{layerIndex}}"
+					],
+					"query": [
+						{
+							"key": "f",
+							"value": "json"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requesting features within viewport",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/FeatureServer/{{layerIndex}}/query?geometry={\"spatialReference\":{\"wkid\":102100,\"latestWkid\":3857}, \"xmin\":12894755.990756506,\"ymin\":-3761760.97292347,\"xmax\":12902080.466797715,\"ymax\":-3752774.5689851935}&f=json&resultRecordCount=1000&resultOffset=0&returnGeometry=true&spatialRel=esriSpatialRelIntersects&inSR=102100&outSR=102100&geometryType=esriGeometryEnvelope&outFields=*&resultType=tile&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"FeatureServer",
+						"{{layerIndex}}",
+						"query"
+					],
+					"query": [
+						{
+							"key": "geometry",
+							"value": "{\"spatialReference\":{\"wkid\":102100,\"latestWkid\":3857}, \"xmin\":12894755.990756506,\"ymin\":-3761760.97292347,\"xmax\":12902080.466797715,\"ymax\":-3752774.5689851935}"
+						},
+						{
+							"key": "f",
+							"value": "json"
+						},
+						{
+							"key": "resultRecordCount",
+							"value": "1000"
+						},
+						{
+							"key": "resultOffset",
+							"value": "0"
+						},
+						{
+							"key": "returnGeometry",
+							"value": "true"
+						},
+						{
+							"key": "spatialRel",
+							"value": "esriSpatialRelIntersects"
+						},
+						{
+							"key": "inSR",
+							"value": "102100"
+						},
+						{
+							"key": "outSR",
+							"value": "102100"
+						},
+						{
+							"key": "geometryType",
+							"value": "esriGeometryEnvelope"
+						},
+						{
+							"key": "outFields",
+							"value": "*"
+						},
+						{
+							"key": "resultType",
+							"value": "tile"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requesting attribute table",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/javascript, */*; q=0.01"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/FeatureServer/{{layerIndex}}/query?where=(1=1)&f=json&returnGeometry=true&outSR=4326&outFields=*&resultOffset=0&resultRecordCount=1000&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"FeatureServer",
+						"{{layerIndex}}",
+						"query"
+					],
+					"query": [
+						{
+							"key": "where",
+							"value": "(1=1)"
+						},
+						{
+							"key": "f",
+							"value": "json"
+						},
+						{
+							"key": "returnGeometry",
+							"value": "true"
+						},
+						{
+							"key": "outSR",
+							"value": "4326"
+						},
+						{
+							"key": "outFields",
+							"value": "*"
+						},
+						{
+							"key": "resultOffset",
+							"value": "0"
+						},
+						{
+							"key": "resultRecordCount",
+							"value": "1000"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filtering layer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"url": {
+					"raw": "{{yourLayerUrl}}/FeatureServer/{{layerIndex}}/query?where=(OBJECTID = 1)&geometry={\"spatialReference\":{\"wkid\":102100,\"latestWkid\":3857}, \"xmin\":12727113.237076055,\"ymin\":-3972154.6628156547,\"xmax\":13233290.815823834,\"ymax\":-3351125.0954397246}&f=json&resultRecordCount=1000&resultOffset=0&returnGeometry=true&spatialRel=esriSpatialRelIntersects&inSR=102100&outSR=102100&geometryType=esriGeometryEnvelope&outFields=*&resultType=tile&token={{yourToken}}",
+					"host": [
+						"{{yourLayerUrl}}"
+					],
+					"path": [
+						"FeatureServer",
+						"{{layerIndex}}",
+						"query"
+					],
+					"query": [
+						{
+							"key": "where",
+							"value": "(OBJECTID = 1)"
+						},
+						{
+							"key": "geometry",
+							"value": "{\"spatialReference\":{\"wkid\":102100,\"latestWkid\":3857}, \"xmin\":12727113.237076055,\"ymin\":-3972154.6628156547,\"xmax\":13233290.815823834,\"ymax\":-3351125.0954397246}"
+						},
+						{
+							"key": "f",
+							"value": "json"
+						},
+						{
+							"key": "resultRecordCount",
+							"value": "1000"
+						},
+						{
+							"key": "resultOffset",
+							"value": "0"
+						},
+						{
+							"key": "returnGeometry",
+							"value": "true"
+						},
+						{
+							"key": "spatialRel",
+							"value": "esriSpatialRelIntersects"
+						},
+						{
+							"key": "inSR",
+							"value": "102100"
+						},
+						{
+							"key": "outSR",
+							"value": "102100"
+						},
+						{
+							"key": "geometryType",
+							"value": "esriGeometryEnvelope"
+						},
+						{
+							"key": "outFields",
+							"value": "*"
+						},
+						{
+							"key": "resultType",
+							"value": "tile"
+						},
+						{
+							"key": "token",
+							"value": "{{yourToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "yourLayerUrl",
+			"value": "yourLayerUrl"
+		},
+		{
+			"key": "layerIndex",
+			"value": "0",
+			"type": "string"
+		},
+		{
+			"key": "yourToken",
+			"value": "yourToken",
+			"type": "string"
+		}
+	]
+}
